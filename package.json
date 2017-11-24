@@ -1,0 +1,19 @@
+{
+  "name": "quotee",
+  "version": "1.0.0",
+  "description": "quotes by idiats",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spacerobots/quotee.git"
+  },
+  "author": "robots",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/spacerobots/quotee/issues"
+  },
+  "homepage": "https://github.com/spacerobots/quotee#readme"
+}
