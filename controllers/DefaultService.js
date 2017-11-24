@@ -22,35 +22,14 @@ exports.quotes = function(args, res, next) {
    *
    * returns List
    **/
-  var examples = {};
-  examples['application/json'] = [ {
-  "quote" : "Don\\'t be a cricket. You\\'re a cricket",
-  "id" : 1234,
-  "title" : "You're a cricket"
-} ];
-  if (Object.keys(examples).length > 0) {
-    res.setHeader('Content-Type', 'application/json');
-
-    
-    //Checking connection status
-    Models.quote.findAndCount()
-    .then(result => {
-      console.log(result.count);
-      console.log(result.rows);
-	  res.json(result);
-    });
-
-    res.end(JSON.stringify(examples[Object.keys(examples)[0]] || {}, null, 2));
-  } else {
 
     Models.quote.findAndCount()
     .then(result => {
       console.log(result.count);
       console.log(result.rows);
+	    res.end(JSON.stringify(result));
     });
 
-    res.end();
-  }
 }
 
 exports.quotesForTagIdGET = function(args, res, next) {

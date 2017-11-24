@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "Rutgers2017",
+    "password": "charlierocks",
     "database": "quotee",
     "host": "localhost",
     "port": 3306,
