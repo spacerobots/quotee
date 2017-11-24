@@ -1,0 +1,152 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "Quotee API for displaying Spacerobots quotes",
+    "version" : "1.0.0",
+    "title" : "Quotee API",
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host" : "virtserver.swaggerhub.com",
+  "basePath" : "/Spacerobots/Quotee/1.0.0",
+  "schemes" : [ "https" ],
+  "paths" : {
+    "/quotes" : {
+      "get" : {
+        "summary" : "fetches all the quotes",
+        "operationId" : "quotes",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "all quotes",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Quote"
+              }
+            }
+          },
+          "400" : {
+            "description" : "you done fucked up"
+          }
+        }
+      }
+    },
+    "/tags" : {
+      "get" : {
+        "summary" : "gets all the tags",
+        "operationId" : "tags",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "all tags",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Tag"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/quotesForTag/{id}" : {
+      "get" : {
+        "summary" : "get all quotes for a tag",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "tag id",
+          "required" : true,
+          "type" : "integer"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "success"
+          },
+          "400" : {
+            "description" : "you done fucked up"
+          }
+        }
+      }
+    },
+    "/tagsForQuote/{id}" : {
+      "get" : {
+        "summary" : "get all the tags for a quote",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "quote id",
+          "required" : true,
+          "type" : "integer"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "success"
+          },
+          "400" : {
+            "description" : "you done fucked up"
+          }
+        }
+      }
+    },
+    "/quote/{id}" : {
+      "get" : {
+        "summary" : "get a quote by id",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "quote id",
+          "required" : true,
+          "type" : "integer"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "success"
+          },
+          "400" : {
+            "description" : "you done fucked up"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "Quote" : {
+      "type" : "object",
+      "required" : [ "id", "quote", "title" ],
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "example" : 1234
+        },
+        "title" : {
+          "type" : "string",
+          "example" : "You're a cricket"
+        },
+        "quote" : {
+          "type" : "string",
+          "example" : "Don\\'t be a cricket. You\\'re a cricket"
+        }
+      }
+    },
+    "Tag" : {
+      "type" : "object",
+      "required" : [ "id", "tag" ],
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "example" : 456
+        },
+        "tag" : {
+          "type" : "string",
+          "example" : "hash8mark"
+        }
+      }
+    }
+  }
+}

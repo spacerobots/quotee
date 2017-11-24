@@ -1,0 +1,123 @@
+---
+swagger: "2.0"
+info:
+  description: "Quotee API for displaying Spacerobots quotes"
+  version: "1.0.0"
+  title: "Quotee API"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "virtserver.swaggerhub.com"
+basePath: "/Spacerobots/Quotee/1.0.0"
+schemes:
+- "https"
+paths:
+  /quotes:
+    get:
+      summary: "fetches all the quotes"
+      operationId: "quotes"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "all quotes"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Quote"
+        400:
+          description: "you done fucked up"
+      x-swagger-router-controller: "Default"
+  /tags:
+    get:
+      summary: "gets all the tags"
+      operationId: "tags"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "all tags"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Tag"
+      x-swagger-router-controller: "Default"
+  /quotesForTag/{id}:
+    get:
+      summary: "get all quotes for a tag"
+      operationId: "quotesForTagIdGET"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "tag id"
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "success"
+        400:
+          description: "you done fucked up"
+      x-swagger-router-controller: "Default"
+  /tagsForQuote/{id}:
+    get:
+      summary: "get all the tags for a quote"
+      operationId: "tagsForQuoteIdGET"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "quote id"
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "success"
+        400:
+          description: "you done fucked up"
+      x-swagger-router-controller: "Default"
+  /quote/{id}:
+    get:
+      summary: "get a quote by id"
+      operationId: "quoteIdGET"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "quote id"
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "success"
+        400:
+          description: "you done fucked up"
+      x-swagger-router-controller: "Default"
+definitions:
+  Quote:
+    type: "object"
+    required:
+    - "id"
+    - "quote"
+    - "title"
+    properties:
+      id:
+        type: "integer"
+        example: 1234
+      title:
+        type: "string"
+        example: "You're a cricket"
+      quote:
+        type: "string"
+        example: "Don\\'t be a cricket. You\\'re a cricket"
+  Tag:
+    type: "object"
+    required:
+    - "id"
+    - "tag"
+    properties:
+      id:
+        type: "integer"
+        example: 456
+      tag:
+        type: "string"
+        example: "hash8mark"
