@@ -37,6 +37,7 @@ exports.quotes = function(args, res, next) {
     .then(result => {
       console.log(result.count);
       console.log(result.rows);
+	  res.json(result);
     });
 
     res.end(JSON.stringify(examples[Object.keys(examples)[0]] || {}, null, 2));

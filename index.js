@@ -38,6 +38,10 @@ swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
   // Serve the Swagger documents and Swagger UI
   app.use(middleware.swaggerUi());
 
+	app.use("/", (req,res,next) => {
+	
+	})
+
   Models.sequelize.sync({force: false})
     .then(function(){
     // Start the server
