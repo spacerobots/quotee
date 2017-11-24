@@ -4,11 +4,9 @@ info:
   description: "Quotee API for displaying Spacerobots quotes"
   version: "1.0.0"
   title: "Quotee API"
-  license:
-    name: "Apache 2.0"
-    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
-host: "virtserver.swaggerhub.com"
-basePath: "/Spacerobots/Quotee/1.0.0"
+
+host: "localhost:8080"
+basePath: "/"
 schemes:
 - "https"
 paths:
