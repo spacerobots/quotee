@@ -12,7 +12,8 @@ module.exports = function(sequelize, DataTypes) {
         title: DataTypes.STRING
     }, {
         underscored: true,
-        freezeTableName: false
+        freezeTableName: false,
+        timestamps: false
     });
     
     Quote.associate = function(models) {
