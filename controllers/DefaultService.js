@@ -1,5 +1,9 @@
 'use strict';
 
+var Sequelize = require("sequelize")
+var Models = require("../models")
+// var Quote = require("quote")
+
 exports.quoteIdGET = function(args, res, next) {
   /**
    * get a quote by id
@@ -7,6 +11,7 @@ exports.quoteIdGET = function(args, res, next) {
    * id Integer quote id
    * no response value expected for this operation
    **/
+
   res.end();
 }
 
@@ -24,8 +29,24 @@ exports.quotes = function(args, res, next) {
 } ];
   if (Object.keys(examples).length > 0) {
     res.setHeader('Content-Type', 'application/json');
+
+    
+    //Checking connection status
+    Models.quote.findAndCount()
+    .then(result => {
+      console.log(result.count);
+      console.log(result.rows);
+    });
+
     res.end(JSON.stringify(examples[Object.keys(examples)[0]] || {}, null, 2));
   } else {
+
+    Models.quote.findAndCount()
+    .then(result => {
+      console.log(result.count);
+      console.log(result.rows);
+    });
+
     res.end();
   }
 }
