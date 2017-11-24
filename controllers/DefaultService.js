@@ -1,4 +1,5 @@
 'use strict';
+var models = require('../models');
 
 exports.quoteIdGET = function(args, res, next) {
   /**
