@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/spacerobots/quotee/issues"
   },
-  "homepage": "https://github.com/spacerobots/quotee#readme"
+  "homepage": "https://github.com/spacerobots/quotee#readme",
+  "dependencies": {
+    "mysql2": "^1.5.1",
+    "sequelize": "^4.22.15"
+  }
 }
