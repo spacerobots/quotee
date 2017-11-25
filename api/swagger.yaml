@@ -103,6 +103,7 @@ paths:
       x-swagger-router-controller: "Default"
   /slackrandom:
     post:
+      operationId: "slackrandomPOST"
       summary: "generates a random quote based on some slack input"
       consumes:
       - "application/x-www-form-urlencoded"
@@ -144,6 +145,7 @@ paths:
       responses:
         200:
           description: "Success"
+      x-swagger-router-controller: "Default"
 definitions:
   Quote:
     type: "object"

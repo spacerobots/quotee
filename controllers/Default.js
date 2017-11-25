@@ -28,6 +28,6 @@ module.exports.tagsForQuoteIdGET = function tagsForQuoteIdGET (req, res, next) {
   Default.tagsForQuoteIdGET(req.swagger.params, res, next);
 };
 
-module.exports.slackrandomPOST = function slackRandom (req, res, next) {
+module.exports.slackrandomPOST = function slackrandomPOST (req, res, next) {
   Default.slackrandomPOST(req.swagger.params, res, next);
 };
