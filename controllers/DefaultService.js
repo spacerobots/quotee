@@ -104,19 +104,20 @@ exports.slackrandomPOST = function(args, res, next) {
           Sequelize.fn( 'RAND' ),
         ]
   }).then( result => {
-
-    var slackURL = "https://slack.com/api/chat.postMessage";
-    var quote = result.quote;
+	
+    var slackURL = "https://hooks.slack.com/services/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";
+    var quote = result.date_submitted + "\n" + result.quote;
     var slackBody = {
       "text" : quote,
       "channel" : channel,
     }
 	
+  	var SLACKKEY = "Bearer " + process.env.SLACK_KEY;
     request.post({
       url: slackURL,	
-    	headers: {
+      headers: {
         "content-type": "application/json",
-        "Authorization": "Bearer "
+        "Authorization": SLACKKEY 
       },
       body: slackBody,
 	    json: true
