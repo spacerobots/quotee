@@ -109,6 +109,19 @@
           }
         }
       }
+    },
+    "/quoteRandom" : {
+      "get" : {
+        "summary" : "get a quote by id",
+        "responses" : {
+          "200" : {
+            "description" : "success"
+          },
+          "400" : {
+            "description" : "you done fucked up"
+          }
+        }
+      }
     }
   },
   "definitions" : {

@@ -3,19 +3,18 @@ var models = require('../models');
 
 var Sequelize = require("sequelize")
 var Models = require("../models")
-// var Quote = require("quote")
-
 
 exports.quoteRandomGET = function(args, res, next) {
 
-Models.quote.find({
-	order: [
-		    Sequelize.fn( 'RAND' ),
-		  ]
-}).then( result => {
-	 res.writeHead(200,{"Content-Type": "application/json"});
-	  res.end(JSON.stringify(result));
-})
+  Models.quote.find({
+    order: [
+          Sequelize.fn( 'RAND' ),
+        ]
+  }).then( result => {
+    res.writeHead(200,{"Content-Type": "application/json"});
+    res.end(JSON.stringify(result));
+  })
+
 }
 
 exports.quoteIdGET = function(args, res, next) {

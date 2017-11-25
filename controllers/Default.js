@@ -5,7 +5,7 @@ var url = require('url');
 var Default = require('./DefaultService');
 
 module.exports.quoteRandomGET = function quoteIdGET (req, res, next) {
-  Default.quoteRandomIdGET(req.swagger.params, res, next);
+  Default.quoteRandomGET(req.swagger.params, res, next);
 };
 
 module.exports.quoteIdGET = function quoteIdGET (req, res, next) {

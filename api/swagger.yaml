@@ -91,6 +91,16 @@ paths:
         400:
           description: "you done fucked up"
       x-swagger-router-controller: "Default"
+  /quoteRandom:
+    get:
+      summary: "get a random quote"
+      operationId: "quoteRandomGET"
+      responses:
+        200:
+          description: "success"
+        400:
+          description: "you done fucked up"
+      x-swagger-router-controller: "Default"
 definitions:
   Quote:
     type: "object"
