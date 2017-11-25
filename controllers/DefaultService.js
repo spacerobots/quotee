@@ -5,6 +5,19 @@ var Sequelize = require("sequelize")
 var Models = require("../models")
 // var Quote = require("quote")
 
+
+exports.quoteRandomGET = function(args, res, next) {
+
+Models.quote.find({
+	order: [
+		    Sequelize.fn( 'RAND' ),
+		  ]
+}).then( result => {
+	 res.writeHead(200,{"Content-Type": "application/json"});
+	  res.end(JSON.stringify(result));
+})
+}
+
 exports.quoteIdGET = function(args, res, next) {
   /**
    * get a quote by id
@@ -25,9 +38,9 @@ exports.quotes = function(args, res, next) {
 
     Models.quote.findAndCount()
     .then(result => {
-      console.log(result.count);
-      console.log(result.rows);
-	    res.end(JSON.stringify(result));
+      
+      res.writeHead(200, {"Content-Type": "application/json"});
+      res.end(JSON.stringify(result));
     });
 
 }
