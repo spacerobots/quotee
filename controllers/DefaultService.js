@@ -5,7 +5,6 @@ var Sequelize = require("sequelize")
 var Models = require("../models")
 
 var request = require("request")
-var env = require("dot-env")
 
 exports.quoteRandomGET = function(args, res, next) {
 
@@ -98,8 +97,7 @@ exports.slackrandomPOST = function(args, res, next) {
   * user_name (String)
   * text (String)
   **/
- console.log(JSON.stringify(args.channel_id.value)); 
-	
+ 	
   var channel = args.channel_id.value
   Models.quote.find({
     order: [
@@ -113,26 +111,42 @@ exports.slackrandomPOST = function(args, res, next) {
       "text" : quote,
       "channel" : channel,
     }
-console.log(JSON.stringify(slackBody,"","\t"));
-	console.log(slackURL)
 	
     request.post({
       url: slackURL,	
-	headers: {
-	   "content-type": "application/json",
-	    "Authorization": "Bearer xoxp-2522386844-2522386846-278535985287-cc1724bce867e2be5388aa581ee6b9da"
-	},
-          body: slackBody,
+    	headers: {
+        "content-type": "application/json",
+        "Authorization": "Bearer "
+      },
+      body: slackBody,
 	    json: true
-      
     },function(error, response, body) {
         if (error) {
           return console.log(error);
         }
-        console.log("sucess");
-	    console.log(JSON.stringify(response,"","\t"));
     })
 
     res.end();
   })
+}
+
+exports.searchquotesGET = function(args, res, next) {
+
+  var searchTerm = args.searchterm.value;
+  
+  var op = Sequelize.Op
+  Models.quote.findAndCountAll({
+    where: {
+      quote: {
+        [op.like] : "%" + searchTerm + "%"
+      }
+    },
+    limit: 10
+  }).then(result => {
+    res.writeHead(200, {"Content-Type": "application/json"});
+    var jsonResults = JSON.stringify(result);
+
+    res.end(jsonResults);
+  });
+  
 }

@@ -31,3 +31,7 @@ module.exports.tagsForQuoteIdGET = function tagsForQuoteIdGET (req, res, next) {
 module.exports.slackrandomPOST = function slackrandomPOST (req, res, next) {
   Default.slackrandomPOST(req.swagger.params, res, next);
 };
+
+module.exports.searchquotesGET = function searchquotesGET (req, res, next) {
+  Default.searchquotesGET(req.swagger.params, res, next);
+};

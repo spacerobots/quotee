@@ -176,6 +176,26 @@
           }
         }
       }
+    },
+    "/searchquotes/{searchterm}" : {
+      "get" : {
+        "summary" : "returns a list of quotes that match the search term",
+        "parameters" : [ {
+          "name" : "searchterm",
+          "in" : "path",
+          "description" : "search term",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "success"
+          },
+          "400" : {
+            "description" : "you done fucked up"
+          }
+        }
+      }
     }
   },
   "definitions" : {
