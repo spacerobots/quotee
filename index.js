@@ -7,7 +7,10 @@ var fs = require('fs'),
 var app = require('connect')();
 var swaggerTools = require('swagger-tools');
 var jsyaml = require('js-yaml');
-var serverPort = 8080;
+var serverPort = 8081;
+
+// var Sequelize = require("sequelize")
+var Models = require("./models")
 
 // swaggerRouter configuration
 var options = {
@@ -35,10 +38,17 @@ swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
   // Serve the Swagger documents and Swagger UI
   app.use(middleware.swaggerUi());
 
-  // Start the server
-  http.createServer(app).listen(serverPort, function () {
-    console.log('Your server is listening on port %d (http://localhost:%d)', serverPort, serverPort);
-    console.log('Swagger-ui is available on http://localhost:%d/docs', serverPort);
+	app.use("/", (req,res,next) => {
+	
+	})
+
+  Models.sequelize.sync({force: false})
+    .then(function(){
+    // Start the server
+    http.createServer(app).listen(serverPort, function () {
+      console.log('Your server is listening on port %d (http://localhost:%d)', serverPort, serverPort);
+      console.log('Swagger-ui is available on http://localhost:%d/docs', serverPort);
+    });
   });
 
 });
