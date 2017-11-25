@@ -122,6 +122,60 @@
           }
         }
       }
+    },
+    "/slackrandom" : {
+      "post" : {
+        "summary" : "generates a random quote based on some slack input",
+        "consumes" : [ "application/x-www-form-urlencoded" ],
+        "parameters" : [ {
+          "name" : "token",
+          "in" : "formData",
+          "description" : "token from slack",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "team_id",
+          "in" : "formData",
+          "description" : "slack team id",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "team_domain",
+          "in" : "formData",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "channel_id",
+          "in" : "formData",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "channel_name",
+          "in" : "formData",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "used_id",
+          "in" : "formData",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "user_name",
+          "in" : "formData",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "text",
+          "in" : "formData",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success"
+          }
+        }
+      }
     }
   },
   "definitions" : {

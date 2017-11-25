@@ -83,3 +83,18 @@ exports.tagsForQuoteIdGET = function(args, res, next) {
   res.end();
 }
 
+exports.slackrandomPOST = function(args, res, next) {
+  /**
+   * parameters expected in the args:
+  * token (String)
+  * team_id (String)
+  * team_domain (String)
+  * channel_id (String)
+  * channel_name (String)
+  * used_id (String)
+  * user_name (String)
+  * text (String)
+  **/
+  // no response value expected for this operation
+  res.end("<html><body><h1>Sloose Sucks donkey balls</h1></body></html>");
+}

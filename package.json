@@ -18,6 +18,7 @@
   "homepage": "https://github.com/spacerobots/quotee#readme",
   "dependencies": {
     "connect": "^3.6.5",
+    "express": "^4.16.2",
     "js-yaml": "^3.10.0",
     "mysql2": "^1.5.1",
     "pm2": "^2.8.0",

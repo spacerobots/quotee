@@ -9,7 +9,6 @@ var swaggerTools = require('swagger-tools');
 var jsyaml = require('js-yaml');
 var serverPort = 8081;
 
-// var Sequelize = require("sequelize")
 var Models = require("./models")
 
 // swaggerRouter configuration
@@ -37,10 +36,6 @@ swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
 
   // Serve the Swagger documents and Swagger UI
   app.use(middleware.swaggerUi());
-
-	app.use("/", (req,res,next) => {
-	
-	})
 
   Models.sequelize.sync({force: false})
     .then(function(){
