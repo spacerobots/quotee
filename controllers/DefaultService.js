@@ -106,21 +106,21 @@ exports.slackrandomPOST = function(args, res, next) {
           Sequelize.fn( 'RAND' ),
         ]
   }).then( result => {
-
-    var slackURL = "https://slack.com/api/chat.postMessage";
-    var quote = result.quote;
+	console.log(result)
+    var slackURL = "https://hooks.slack.com/services/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";
+    var quote = result.date_submitted + "\n" + result.quote;
     var slackBody = {
       "text" : quote,
       "channel" : channel,
     }
 console.log(JSON.stringify(slackBody,"","\t"));
 	console.log(slackURL)
-	
+	var SLACKKEY = "Bearer " + process.env.SLACK_KEY;
     request.post({
       url: slackURL,	
 	headers: {
 	   "content-type": "application/json",
-	    "Authorization": "Bearer xoxp-2522386844-2522386846-278535985287-cc1724bce867e2be5388aa581ee6b9da"
+	    "Authorization": SLACKKEY 
 	},
           body: slackBody,
 	    json: true
@@ -130,7 +130,6 @@ console.log(JSON.stringify(slackBody,"","\t"));
           return console.log(error);
         }
         console.log("sucess");
-	    console.log(JSON.stringify(response,"","\t"));
     })
 
     res.end();
