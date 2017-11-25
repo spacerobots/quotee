@@ -5,6 +5,7 @@ var Sequelize = require("sequelize")
 var Models = require("../models")
 
 var request = require("request")
+var env = require("dot-env")
 
 exports.quoteRandomGET = function(args, res, next) {
 
@@ -97,8 +98,9 @@ exports.slackrandomPOST = function(args, res, next) {
   * user_name (String)
   * text (String)
   **/
-  
-  var channel = args.channel_id
+ console.log(JSON.stringify(args.channel_id.value)); 
+	
+  var channel = args.channel_id.value
   Models.quote.find({
     order: [
           Sequelize.fn( 'RAND' ),
@@ -106,27 +108,29 @@ exports.slackrandomPOST = function(args, res, next) {
   }).then( result => {
 
     var slackURL = "https://slack.com/api/chat.postMessage";
-    var quote = JSON.stringify(result.quote);
+    var quote = result.quote;
     var slackBody = {
       "text" : quote,
       "channel" : channel,
-      "token" : "xoxp-2522386844-2522386846-276941698929-add5e4186279eb39e63785a39e33da96"
     }
-
-    request({
-      method: "POST",
-      uri: slackURL,
-      data: [
-        {
-          "content-type" : "application/json",
-          body: slackBody
-        }
-      ]
+console.log(JSON.stringify(slackBody,"","\t"));
+	console.log(slackURL)
+	
+    request.post({
+      url: slackURL,	
+	headers: {
+	   "content-type": "application/json",
+	    "Authorization": "Bearer xoxp-2522386844-2522386846-278535985287-cc1724bce867e2be5388aa581ee6b9da"
+	},
+          body: slackBody,
+	    json: true
+      
     },function(error, response, body) {
         if (error) {
           return console.log(error);
         }
         console.log("sucess");
+	    console.log(JSON.stringify(response,"","\t"));
     })
 
     res.end();
