@@ -38,9 +38,9 @@ exports.quotes = function(args, res, next) {
 
     Models.quote.findAndCount()
     .then(result => {
-      console.log(result.count);
-      console.log(result.rows);
-	    res.end(JSON.stringify(result));
+      
+      res.writeHead(200, {"Content-Type": "application/json"});
+      res.end(JSON.stringify(result));
     });
 
 }
