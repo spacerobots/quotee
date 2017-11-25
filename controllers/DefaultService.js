@@ -4,6 +4,8 @@ var models = require('../models');
 var Sequelize = require("sequelize")
 var Models = require("../models")
 
+var request = require("request")
+
 exports.quoteRandomGET = function(args, res, next) {
 
   Models.quote.find({
@@ -95,6 +97,38 @@ exports.slackrandomPOST = function(args, res, next) {
   * user_name (String)
   * text (String)
   **/
-  // no response value expected for this operation
-  res.end("<html><body><h1>Sloose Sucks donkey balls</h1></body></html>");
+  
+  var channel = args.channel_id
+  Models.quote.find({
+    order: [
+          Sequelize.fn( 'RAND' ),
+        ]
+  }).then( result => {
+
+    var slackURL = "https://slack.com/api/chat.postMessage";
+    var quote = JSON.stringify(result.quote);
+    var slackBody = {
+      "text" : quote,
+      "channel" : channel,
+      "token" : "xoxp-2522386844-2522386846-276941698929-add5e4186279eb39e63785a39e33da96"
+    }
+
+    request({
+      method: "POST",
+      uri: slackURL,
+      data: [
+        {
+          "content-type" : "application/json",
+          body: slackBody
+        }
+      ]
+    },function(error, response, body) {
+        if (error) {
+          return console.log(error);
+        }
+        console.log("sucess");
+    })
+
+    res.end();
+  })
 }
