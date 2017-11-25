@@ -5,10 +5,11 @@ info:
   version: "1.0.0"
   title: "Quotee API"
 
-host: "localhost:8080"
+host: "localhost:8081"
 basePath: "/"
 schemes:
 - "https"
+- "http"
 paths:
   /quotes:
     get:
