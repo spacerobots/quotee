@@ -6,7 +6,7 @@ var Models = require("../models")
 // var Quote = require("quote")
 
 
-exports.quoteRandomIdGET = function(args, res, next) {
+exports.quoteRandomGET = function(args, res, next) {
 
 Models.quote.find({
 	order: [
